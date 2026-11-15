@@ -8,7 +8,7 @@ import { LM, type Frame } from '../../pose/geometry';
 import { FORM_DISCLAIMER, FormCoach, type FormTip } from '../../pose/form';
 import { Icon } from '../../components/Icon';
 
-const CONNECTIONS: [number, number][] = [
+export const CONNECTIONS: [number, number][] = [
   [LM.leftShoulder, LM.rightShoulder],
   [LM.leftShoulder, LM.leftElbow],
   [LM.leftElbow, LM.leftWrist],

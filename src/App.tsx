@@ -27,6 +27,9 @@ import { QuizGame } from './features/challenges/games/QuizGame';
 import { MemoryGame } from './features/challenges/games/MemoryGame';
 import { PuzzleGame } from './features/challenges/games/PuzzleGame';
 import { SimonGame } from './features/challenges/games/SimonGame';
+import { LessonsPage } from './features/lessons/LessonsPage';
+import { RecordLesson } from './features/lessons/RecordLesson';
+import { PracticeLesson } from './features/lessons/PracticeLesson';
 import { TokenGate } from './features/challenges/TokenGate';
 import { GAME_COSTS } from './domain/gamification/tokens';
 import { BRAND } from './brand';
@@ -42,6 +45,7 @@ const NAV: { to: string; label: string; short: string; icon: IconName; phone: bo
   { to: '/workout', label: 'Today’s Workout', short: 'Today', icon: 'play', phone: true },
   { to: '/workouts', label: 'Workouts', short: 'Workouts', icon: 'dumbbell', phone: true },
   { to: '/nutrition', label: 'Nutrition', short: 'Nutrition', icon: 'apple', phone: false },
+  { to: '/lessons', label: 'Teacher Lessons', short: 'Lessons', icon: 'camera', phone: false },
   { to: '/progress', label: 'Progress', short: 'Progress', icon: 'chart', phone: false },
   { to: '/challenges', label: 'Challenges', short: 'Challenges', icon: 'trophy', phone: false },
   { to: '/profile', label: 'Profile & Health', short: 'Profile', icon: 'user', phone: false },
@@ -205,6 +209,9 @@ export function App() {
           <Route path="profile" element={<FoodProfileTab />} />
           <Route path="snap" element={<NutritionPage />} />
         </Route>
+        <Route path="/lessons" element={<Adaptive><LessonsPage /></Adaptive>} />
+        <Route path="/lessons/record" element={<Adaptive><RecordLesson /></Adaptive>} />
+        <Route path="/lessons/practice/:id" element={<Adaptive><PracticeLesson /></Adaptive>} />
         <Route path="/progress" element={<Shell><RequireProfile><ProgressPage /></RequireProfile></Shell>} />
         <Route path="/challenges" element={<Shell><RequireProfile><ChallengesPage /></RequireProfile></Shell>} />
         <Route path="/challenges/balance" element={<Shell><RequireProfile><BalanceGame /></RequireProfile></Shell>} />

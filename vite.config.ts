@@ -56,7 +56,7 @@ const SECURITY_HEADERS = {
 
 export default defineConfig({
   plugins: [react(), cspPlugin()],
-  server: { port: 5180, strictPort: true, headers: SECURITY_HEADERS },
+  server: { port: 5181, strictPort: true, headers: SECURITY_HEADERS },
   preview: { port: 4180, strictPort: true, headers: SECURITY_HEADERS },
   build: { target: 'es2022', sourcemap: true },
   test: {
