@@ -1,0 +1,437 @@
+/* ─────────────── Nutrition guide: dashboard, foods, coach, profile ─────────────── */
+.ng-hub {
+  max-width: 1100px;
+  width: 100%;
+  min-width: 0;
+  margin-inline: auto;
+}
+.ng-hub > * {
+  min-width: 0;
+}
+.ng-hub .stack-lg,
+.ng-hub .card {
+  min-width: 0;
+}
+.ng-tabs {
+  /* width 0 + min-width 100% keeps the scrolling tab row from widening the page on a phone */
+  width: 0;
+  min-width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding: 4px;
+  border-radius: var(--r-xl);
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  scrollbar-width: none;
+}
+.ng-tabs::-webkit-scrollbar {
+  display: none;
+}
+.ng-tab {
+  flex: none;
+  padding: 9px 16px;
+  border-radius: 999px;
+  font-weight: 650;
+  font-size: 0.95rem;
+  color: var(--ink-2);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.ng-tab:hover {
+  color: var(--ink);
+  background: var(--surface);
+}
+.ng-tab.active {
+  color: #fff;
+  background: var(--brand);
+}
+.ng-tab:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.ng-notice {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 12px 14px;
+  border-radius: var(--r-lg);
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  color: var(--ink-2);
+}
+.ng-notice > svg {
+  flex: none;
+  margin-top: 2px;
+  color: var(--brand);
+}
+.ng-notice p {
+  margin: 0;
+}
+.ng-allergy-note {
+  display: flex;
+  gap: 6px;
+  align-items: flex-start;
+  margin: 0;
+  color: var(--ink-2);
+}
+.ng-warn-text {
+  color: var(--warn-ink, #8a4b00);
+}
+.ng-good {
+  color: var(--brand);
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  margin: 0;
+}
+
+.ng-top {
+  align-items: stretch;
+}
+.ng-goals {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 14px;
+}
+.ng-goals li {
+  display: grid;
+  gap: 4px;
+}
+
+/* Week */
+.ng-days {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 8px;
+}
+.ng-day {
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  padding: 10px 4px 8px;
+  border-radius: var(--r-lg);
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+  cursor: pointer;
+  font: inherit;
+}
+.ng-day:hover {
+  border-color: var(--line-strong);
+}
+.ng-day[aria-pressed='true'] {
+  border-color: var(--brand);
+  background: var(--brand-softer);
+  box-shadow: 0 0 0 2px var(--brand-soft);
+}
+.ng-day:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+.ng-day-bar {
+  display: flex;
+  align-items: flex-end;
+  width: 22px;
+  height: 56px;
+  border-radius: 8px;
+  background: var(--surface-3);
+  overflow: hidden;
+}
+.ng-day-fill {
+  display: block;
+  width: 100%;
+  background: var(--brand);
+  border-radius: 8px;
+  transition: height 0.4s var(--ease);
+}
+.ng-day-name {
+  font-size: 0.78rem;
+  font-weight: 650;
+  color: var(--ink-2);
+}
+.ng-day-water {
+  display: block;
+  width: 70%;
+  height: 5px;
+  border-radius: 99px;
+  background: var(--surface-3);
+  overflow: hidden;
+}
+.ng-day-water span {
+  display: block;
+  height: 100%;
+  background: var(--info);
+}
+.ng-week-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  align-items: start;
+}
+.ng-grid {
+  width: 100%;
+  border-collapse: collapse;
+}
+.ng-grid th,
+.ng-grid td {
+  padding: 6px 4px;
+  text-align: center;
+}
+.ng-grid tbody th {
+  text-align: left;
+  font-weight: 600;
+}
+.ng-grid thead th {
+  color: var(--ink-3);
+  font-weight: 600;
+}
+.ng-dot {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid var(--line-strong);
+  background: transparent;
+}
+.ng-dot[data-on='true'] {
+  background: var(--brand);
+  border-color: var(--brand);
+}
+.ng-gaps {
+  padding: 12px;
+  border-radius: var(--r-lg);
+  background: var(--sun-soft);
+  border: 1px solid var(--line);
+  display: grid;
+  gap: 4px;
+}
+.ng-gaps p {
+  margin: 0;
+}
+
+/* Log */
+.ng-log {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+.ng-log-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: var(--r-md);
+  background: var(--surface-2);
+}
+
+/* Foods */
+.ng-foods {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.ng-food {
+  display: grid;
+  gap: 10px;
+  align-content: start;
+}
+.ng-food-name {
+  margin: 0;
+  font-size: 1.1rem;
+}
+.ng-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.ng-nums,
+.ng-contains {
+  margin: 0;
+}
+.ng-why ul,
+.ng-excluded {
+  margin: 0;
+  padding-left: 18px;
+}
+.ng-excluded {
+  list-style: disc;
+  display: grid;
+  gap: 4px;
+  margin-top: 10px;
+  max-height: 320px;
+  overflow: auto;
+}
+.ng-left-out summary,
+.ng-sources summary {
+  cursor: pointer;
+}
+.ng-sources {
+  margin-top: 2px;
+}
+
+/* Coach */
+.ng-tips {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+.ng-tip {
+  border-left: 5px solid var(--info);
+}
+.ng-tip[data-tone='warn'] {
+  border-left-color: var(--warn);
+}
+.ng-tip[data-tone='ok'] {
+  border-left-color: var(--ok);
+}
+.ng-tip h3 {
+  margin: 0;
+  font-size: 1.05rem;
+}
+.ng-tip p {
+  margin: 0;
+}
+.ng-answer {
+  margin-top: 10px;
+  padding: 14px 16px;
+  border-radius: var(--r-lg);
+  background: var(--brand-softer);
+  border: 1px solid var(--line);
+  display: grid;
+  gap: 8px;
+}
+.ng-answer h3,
+.ng-answer p {
+  margin: 0;
+}
+.chip-btn {
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+  background: var(--surface);
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+  text-align: left;
+}
+.chip-btn:hover,
+.chip-btn[aria-pressed='true'] {
+  border-color: var(--brand);
+  background: var(--brand-softer);
+}
+.chip-btn:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+/* Profile */
+.ng-checks {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.ng-confirm {
+  margin-top: 4px;
+}
+.ng-words {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 8px 0 0;
+  padding: 0;
+}
+.ng-words .badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.ng-x {
+  display: inline-grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  padding: 0;
+}
+.ng-x:hover {
+  background: var(--surface-3);
+}
+.ng-x:focus-visible {
+  outline: 2px solid var(--focus);
+}
+.ng-hub .list {
+  margin: 0;
+  padding-left: 18px;
+  display: grid;
+  gap: 4px;
+}
+.ng-hub .inline-icon {
+  vertical-align: -2px;
+}
+
+@media (max-width: 760px) {
+  .ng-foods,
+  .ng-checks,
+  .ng-week-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .ng-days {
+    gap: 4px;
+  }
+  .ng-day {
+    padding-inline: 2px;
+  }
+  .ng-day-name {
+    font-size: 0.7rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ng-day-fill {
+    transition: none;
+  }
+}
+
+.ng-grid-wrap {
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+/* Long food names must never widen a phone screen. */
+.ng-hub .field,
+.ng-hub .grid-2 > * {
+  min-width: 0;
+}
+.ng-hub select.input,
+.ng-hub input.input {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  text-overflow: ellipsis;
+}
+
+/* The seven "what are you looking for" options wrap on a phone instead of widening it. */
+.ng-hub .seg {
+  flex-wrap: wrap;
+  border-radius: var(--r-lg);
+  max-width: 100%;
+}
